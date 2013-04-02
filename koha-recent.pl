@@ -20,7 +20,7 @@ my $isbn;
 my $isbn10;
 my $amazonImg;
 
-my $sqlQuery = "SELECT * FROM (SELECT aqorders.biblionumber AS bnum, biblio.title, biblio.author, biblioitems.isbn FROM aqorders,biblio,biblioitems WHERE biblioitems.biblionumber=aqorders.biblionumber AND biblio.biblionumber=aqorders.biblionumber ORDER BY datereceived DESC LIMIT 25) AS recent ORDER BY rand() LIMIT " . $sqlNumShow . ";";
+my $sqlQuery = "SELECT * FROM (SELECT biblio.biblionumber AS bnum, biblio.title, biblio.author, biblioitems.isbn FROM biblio,biblioitems WHERE biblioitems.biblionumber=biblio.biblionumber ORDER BY datecreated DESC LIMIT 25) AS recent ORDER BY rand() LIMIT " . $sqlNumShow . ";";
 
 my $uni = $dbh->prepare("set names utf8;");
 my $sth = $dbh->prepare($sqlQuery);
