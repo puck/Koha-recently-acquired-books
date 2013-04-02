@@ -4,7 +4,7 @@ use strict;
 use C4::Context;
 use CGI;
 use Business::ISBN;
-use YAML::XS;
+use YAML;
 
 my $config = do{local(@ARGV,$/)="conf/config.yml";<>};
 my $conf = Load $config;
